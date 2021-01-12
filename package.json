@@ -5,15 +5,19 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "dependencies": {
     "@reach/dialog": "^0.12.1",
     "@reach/tabs": "^0.12.1",
     "@reach/visually-hidden": "^0.12.0",
+    "autoprefixer": "^10.2.1",
+    "netlify-identity-widget": "^1.9.1",
     "next": "10.0.5",
+    "postcss": "^8.2.4",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "react-netlify-identity-widget": "^0.2.7"
+    "tailwindcss": "^2.0.2"
   }
 }
