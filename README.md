@@ -1,34 +1,35 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+This is a [Next.js](https://nextjs.org/) app with a Hasura backend, using Netlify Identity for authentication.
 
 ## Getting Started
 
-First, run the development server:
+Do not use `netlify dev`, it does not handle Netlify Functions or Netlify Identity well on localhost.
+
+For local development:
 
 ```bash
-npm run dev
-# or
 yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Netlify Identity
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+The Netlify Identity user object looks like this:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```js
+{
+  id: 'e5f24adf-4958-472d-b297-c3bff2e91c41',
+  aud: '',
+  role: 'instructor',
+  email: 'someone@example.com',
+  confirmation_sent_at: '2021-01-12T13:21:55Z',
+  app_metadata: { provider: 'email' },
+  user_metadata: { full_name: 'Someone Demo' },
+  created_at: '2021-01-12T13:21:55Z',
+  updated_at: '2021-01-12T13:21:55Z'
+}
+```
 
-## Learn More
+## Deploy on Netlify
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+After establishing this project in the git repo service of your choice, follow the instructions from Netlify to connect the project and switch on Identity services.
