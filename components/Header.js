@@ -58,15 +58,13 @@ function Header() {
             </a>
           </Link>
         </nav>
-        <Link href="/admin/index.html">
-          <button
-            onClick={loggedIn ? logout : login}
-            as="a"
-            className="col-span-1 inline-block items-center m-4 px-2 py-2 font-semibold text-blue-700 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:px-8 hover:border-blue-800 hover:bg-blue-700 hover:text-white focus:ring focus:outline-none"
-          >
-            {loggedIn ? "Sign out" : "Sign in"}
-          </button>
-        </Link>
+        <button
+          onClick={loggedIn ? logout : login}
+          as="a"
+          className="col-span-1 inline-block items-center m-4 px-2 py-2 font-semibold text-blue-700 transition duration-500 ease-in-out transform bg-white border rounded-lg lg:px-8 hover:border-blue-800 hover:bg-blue-700 hover:text-white focus:ring focus:outline-none"
+        >
+          {loggedIn ? "Sign out" : "Sign in"}
+        </button>
       </header>
       <div className="flex border-b" />
     </>
