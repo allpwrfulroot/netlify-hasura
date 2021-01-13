@@ -1,0 +1,87 @@
+backend:
+  name: test-repo # test with test-repo, or proxy?, ship with git-gateway
+  branch: main
+# publish_mode: editorial_workflow
+media_folder: public/media
+media_library:
+  name: cloudinary
+  config:
+    cloud_name: djimeh7hr
+    api_key: 813316697952128
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Landing"
+        name: "landing"
+        file: "content/landing.md"
+        fields:
+          - { label: "Heading", name: "heading", widget: "string" }
+          - { label: "Subheading", name: "subheading", widget: "string" }
+          - { label: "HeroImage", name: "hero", widget: "photo" }
+          - { label: "Publish Date", name: "date", widget: "datetime" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Features"
+            name: "features"
+            widget: list
+            fields:
+              - { label: "Feature title", name: "title", widget: "string" }
+              - {
+                  label: "Feature subtitle",
+                  name: "subtitle",
+                  widget: "string",
+                }
+              - {
+                  label: "Feature description",
+                  name: "description",
+                  widget: "text",
+                }
+              - { label: "Feature icon", name: "icon", widget: "string" }
+      - label: "About Us"
+        name: "about"
+        file: "content/about.md"
+        fields:
+          - { label: "About page heading", name: "heading", widget: "string" }
+          - { label: "About page tagline", name: "tagline", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
+          - label: "Team"
+            name: "team"
+            widget: list
+            fields:
+              - { label: "Name", name: "name", widget: "string" }
+              - { label: "Job Title", name: "title", widget: "string" }
+              - {
+                  label: "Office location",
+                  name: "office",
+                  widget: "select",
+                  options: ["Vancouver", "New York", "London"],
+                  default: "London",
+                  multiple: false,
+                }
+  - name: "lessons"
+    label: "Lessons"
+    folder: "content/lessons"
+    create: true
+    fields:
+      - { label: "Lesson title", name: "title", widget: "string" }
+      - { label: "Lesson ID", name: "id", widget: "string" }
+      - { label: "Instructor", name: "instructor", widget: "string" }
+      - { label: "Published", name: "date", widget: "datetime" }
+      - { label: "Content", name: "content", widget: "markdown" }
+      - label: "Quiz questions"
+        name: "questions"
+        widget: list
+        fields:
+          - { label: "Question text", name: "question_text", widget: "string" }
+          - { label: "Question ID", name: "question_id", widget: "string" }
+          - label: "Answer options"
+            name: "answer_options"
+            widget: list
+            fields:
+              - { label: "Option text", name: "answer", widget: "text" }
+              - {
+                  label: "Option points",
+                  name: "score",
+                  widget: "number",
+                  value_type: "int",
+                }

@@ -1,7 +1,7 @@
 import React from "react";
 import Router from "next/router";
 import Link from "next/link";
-import netlifyAuth from "../netlifyAuth";
+import netlifyAuth from "./netlifyAuth";
 
 function Header() {
   const [loggedIn, setLoggedIn] = React.useState(netlifyAuth.isAuthenticated);
@@ -28,7 +28,9 @@ function Header() {
       console.log("authenticating! ", user);
       setLoggedIn(!!user);
       setUser(user);
-      Router.push("/protected");
+      user.role === "instructor"
+        ? Router.push("/class-admin")
+        : Router.push("/lessons");
     });
   };
 
