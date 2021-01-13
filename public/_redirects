@@ -1,4 +1,0 @@
-/class-admin  /class-admin     200!  Role=instructor
-/class-admin  /     401!
-/lessons/*  /lessons/*     200!  Role=instructor,student
-/lessons  /     401!

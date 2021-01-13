@@ -1,0 +1,6 @@
+[[redirects]]
+  from = "/lessons"
+  to = "/"
+  status = 200
+  force = true
+  conditions = {Role = []}
