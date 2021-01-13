@@ -10,4 +10,18 @@
   to = "/"
   status = 302
   force = true
-  conditions = {Role = ["","student"]}
+  conditions = {Role = []}
+
+[[redirects]]
+  from = "/class-admin"
+  to = "/"
+  status = 302
+  force = true
+  conditions = {Role = ["student"]}
+
+[[redirects]]
+  from = "/class-admin"
+  to = "/class-admin"
+  status = 200
+  force = true
+  conditions = {Role = ["instructor"]}
