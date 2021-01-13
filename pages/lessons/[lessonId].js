@@ -16,7 +16,7 @@ export async function getStaticProps({ params }) {
   const { lessonId } = params;
   const {
     default: { attributes },
-  } = await import(`@content/lessons/${lessonId}.md`);
+  } = await import(`content/lessons/${lessonId}.md`);
 
   return {
     props: {
