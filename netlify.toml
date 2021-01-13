@@ -5,6 +5,7 @@
   force = true
   conditions = {Role = []}
 
+[[redirects]]
   from = "/class-admin"
   to = "/"
   status = 401
