@@ -1,13 +1,11 @@
 [[redirects]]
   from = "/lessons/*"
   to = "/"
-  status = 401
   force = true
   conditions = {Role = []}
 
 [[redirects]]
   from = "/class-admin"
   to = "/"
-  status = 401
   force = true
   conditions = {Role = ["","student"]}
