@@ -13,12 +13,13 @@ const handler = async function (event, context) {
     };
   }
   const { identity, user } = context.clientContext;
-  if (user && user.role) {
+  if (user && user.app_metadata.roles) {
     return {
       statusCode: 200,
       body: JSON.stringify({
         "X-Hasura-User-Id": user.id,
-        "X-Hasura-Role": user.role,
+        "X-Hasura-Allowed-Roles": [user.app_metadata.roles[0]],
+        "X-Hasura-Role": user.app_metadata.roles[0],
       }),
     };
   }
