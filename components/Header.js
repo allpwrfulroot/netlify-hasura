@@ -28,9 +28,9 @@ function Header() {
       console.log("authenticating! ", user);
       setLoggedIn(!!user);
       setUser(user);
-      user.app_metadata.roles === "instructor"
+      user.app_metadata.roles.includes("instructor")
         ? Router.push("/class-admin")
-        : user.app_metadata.roles === "student"
+        : user.app_metadata.roles.includes("student")
         ? Router.push("/lessons")
         : null;
     });
