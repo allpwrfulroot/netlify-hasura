@@ -3,12 +3,14 @@ title: A first lesson
 subtitle: To show that this kind of works
 instructor: Demo Danielle
 date: 2019-03-17T19:31:20.591Z
-content: |-
+content: >-
   # Hi there!
+
 
   It's so nice to see you. Stuff and nonsense goes in this intro paragraph.
 
-  ![Image of flowers](adsad)
+
+  ![Image of flowers](https://res.cloudinary.com/djimeh7hr/image/upload/w_400,c_scale/v1609771206/sample.jpg)
 questions:
   - question_text: What color is the sun?
     question_id: sun_color
