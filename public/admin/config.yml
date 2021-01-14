@@ -18,7 +18,7 @@ collections:
         fields:
           - { label: "Heading", name: "heading", widget: "string" }
           - { label: "Subheading", name: "subheading", widget: "string" }
-          - { label: "HeroImage", name: "hero", widget: "photo" }
+          - { label: "HeroImage", name: "hero", widget: "image" }
           - { label: "Publish Date", name: "date", widget: "datetime" }
           - { label: "Body", name: "body", widget: "markdown" }
           - label: "Features"
@@ -49,6 +49,7 @@ collections:
             widget: list
             fields:
               - { label: "Name", name: "name", widget: "string" }
+              - { label: "Photo", name: "photo", widget: "image" }
               - { label: "Job Title", name: "title", widget: "string" }
               - {
                   label: "Office location",
@@ -64,7 +65,15 @@ collections:
     create: true
     fields:
       - { label: "Lesson title", name: "title", widget: "string" }
-      - { label: "Instructor", name: "instructor", widget: "string" }
+      - {
+          label: "Instructor",
+          name: "instructor",
+          widget: "relation",
+          collection: "pages",
+          file: "about",
+          value_field: "team.*.name",
+          search_fields: ["team.*.name"],
+        }
       - { label: "Published", name: "date", widget: "datetime" }
       - { label: "Content", name: "content", widget: "markdown" }
       - label: "Quiz questions"

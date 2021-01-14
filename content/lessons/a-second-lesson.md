@@ -1,7 +1,7 @@
 ---
 title: A second lesson
 subtitle: To show that this kind of works
-instructor: Demo Danielle
+instructor: Alice Smith
 date: 2021-01-14T00:42:27.094Z
 content: |-
   # Welcome again!

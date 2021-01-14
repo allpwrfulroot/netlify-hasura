@@ -65,8 +65,8 @@ function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, signin, signout }}>
-      {user === "loading" ? <p>Loading...</p> : children}
+    <AuthContext.Provider value={{ user, userRole, signin, signout }}>
+      {children}
     </AuthContext.Provider>
   );
 }
