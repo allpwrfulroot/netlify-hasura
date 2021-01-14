@@ -1,4 +1,0 @@
-/lessons/*              /  401!
-/lessons/*              /lessons/:splat  200!  Role=instructor,student
-/class-admin              /  401!
-/class-admin              /class-admin  200!  Role=instructor

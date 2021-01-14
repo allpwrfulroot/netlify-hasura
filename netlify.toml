@@ -1,40 +1,12 @@
 [[redirects]]
-  from = "/lessons"
-  to = "/lessons"
-  status = 200
-  force = true
-  conditions = {Role = ["instructor","student"]}
-
-[[redirects]]
-  from = "/lessons"
-  to = "/"
-  status = 302
-  force = true
-  conditions = {Role = []}
-
-[[redirects]]
   from = "/lessons/*"
   to = "/lessons/:splat"
   status = 200
   force = true
-  conditions = {Role = ["instructor","student"]}
+  conditions = {Roles = ["student","instructor"]}
 
 [[redirects]]
   from = "/lessons/*"
-  to = "/"
-  status = 302
-  force = true
-  conditions = {Role = []}
-
-[[redirects]]
-  from = "/class-admin"
-  to = "/class-admin"
-  status = 200
-  force = true
-  conditions = {Role = ["instructor"]}
-
-[[redirects]]
-  from = "/class-admin"
-  to = "/"
+  to = "/lessons"
   status = 302
   force = true

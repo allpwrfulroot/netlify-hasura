@@ -1,5 +1,5 @@
 backend:
-  name: test-repo # test with test-repo, or proxy?, ship with git-gateway
+  name: git-gateway # test with test-repo, or proxy?, ship with git-gateway
   branch: main
 # publish_mode: editorial_workflow
 media_folder: public/media
@@ -64,7 +64,6 @@ collections:
     create: true
     fields:
       - { label: "Lesson title", name: "title", widget: "string" }
-      - { label: "Lesson ID", name: "id", widget: "string" }
       - { label: "Instructor", name: "instructor", widget: "string" }
       - { label: "Published", name: "date", widget: "datetime" }
       - { label: "Content", name: "content", widget: "markdown" }

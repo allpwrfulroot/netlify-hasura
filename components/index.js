@@ -3,4 +3,6 @@ import { default as Header } from "./Header";
 import { default as Hero } from "./Hero";
 import { default as Icon } from "./Icon";
 
-export { FeatureCard, Header, Hero, Icon };
+import { AuthProvider, useAuth } from "./netlifyAuthHook";
+
+export { AuthProvider, useAuth, FeatureCard, Header, Hero, Icon };

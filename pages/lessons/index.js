@@ -1,9 +1,12 @@
 import React from "react";
 import Link from "next/link";
+import { useAuth } from "components";
 import fs from "fs";
 import path from "path";
 
 function LessonIndex({ lessons }) {
+  const { user } = useAuth();
+
   if (!lessons || !lessons.length) {
     return <p>No lessons found!</p>;
   }
