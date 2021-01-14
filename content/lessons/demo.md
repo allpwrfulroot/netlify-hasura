@@ -7,6 +7,8 @@ content: |-
   # Hi there!
 
   It's so nice to see you. Stuff and nonsense goes in this intro paragraph.
+
+  ![Image of flowers](adsad)
 questions:
   - question_text: What color is the sun?
     question_id: sun_color
