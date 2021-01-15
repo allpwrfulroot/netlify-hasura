@@ -3,6 +3,8 @@
 const fetch = require("node-fetch");
 
 const handler = async function (event, context) {
+  console.log("event? ", event);
+  console.log("context? ", context);
   if (!context.clientContext && !context.clientContext.identity) {
     return {
       statusCode: 500,
