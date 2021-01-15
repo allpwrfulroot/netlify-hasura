@@ -42,10 +42,7 @@ function LessonIndex({ lessons }) {
                 id: user.id,
               },
             }),
-            headers: {
-              "content-type": "application/json",
-              authentication: `Bearer ${user.token}`,
-            },
+            credentials: "include",
           }
         );
         const userData = await userRes.json();
