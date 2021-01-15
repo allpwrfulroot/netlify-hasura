@@ -32,20 +32,22 @@ function LessonIndex({ lessons }) {
   React.useEffect(() => {
     async function getUserData() {
       try {
-        const userRes = await fetch("http://localhost:8080/v1/graphql", {
-          method: "POST",
-          body: JSON.stringify({
-            query: GET_USER,
-            variables: {
-              user_id: user.id,
+        const userRes = await fetch(
+          "https://netlify-cms-demo.hasura.app/v1/graphql",
+          {
+            method: "POST",
+            body: JSON.stringify({
+              query: GET_USER,
+              variables: {
+                id: user.id,
+              },
+            }),
+            headers: {
+              "content-type": "application/json",
+              authentication: `Bearer ${user.token.access_token}`,
             },
-          }),
-          headers: {
-            "content-type": "application/json",
-            "x-hasura-role": "student",
-            "x-hasura-user-id": "e5f24adf-4958-472d-b297-c3bff2e91c41",
-          },
-        });
+          }
+        );
         const userData = await userRes.json();
         console.log("received: ", userData);
       } catch (err) {
