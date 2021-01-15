@@ -42,7 +42,7 @@ function LessonIndex({ lessons }) {
                 id: user.id,
               },
             }),
-            credentials: "include",
+            credentials: "same-origin",
           }
         );
         const userData = await userRes.json();
