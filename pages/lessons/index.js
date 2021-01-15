@@ -42,7 +42,10 @@ function LessonIndex({ lessons }) {
                 id: user.id,
               },
             }),
-            credentials: "same-origin",
+            headers: {
+              "content-type": "application/json",
+              authorization: `Bearer ${user.token.access_token}`,
+            },
           }
         );
         const userData = await userRes.json();

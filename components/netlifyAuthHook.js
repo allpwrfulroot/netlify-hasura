@@ -19,7 +19,7 @@ function AuthProvider({ children }) {
       );
     });
     netlifyIdentity.init();
-  }, [setUser, setUserRole, getCookie]);
+  }, [setUser, setUserRole]);
 
   // Monitor client-side routing
   useEffect(() => {
