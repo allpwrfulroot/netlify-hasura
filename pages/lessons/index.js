@@ -44,7 +44,7 @@ function LessonIndex({ lessons }) {
             }),
             headers: {
               "content-type": "application/json",
-              authentication: `Bearer ${user.token.access_token}`,
+              authentication: `Bearer ${user.token}`,
             },
           }
         );
