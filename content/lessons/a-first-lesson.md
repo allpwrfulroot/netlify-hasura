@@ -2,15 +2,7 @@
 title: A first lesson
 subtitle: To show that this kind of works
 instructor: Alice Smith
-date: 2019-03-17T19:31:20.591Z
-content: >-
-  # Hi there!
-
-
-  It's so nice to see you. Stuff and nonsense goes in this intro paragraph.
-
-
-  ![Image of flowers](https://res.cloudinary.com/djimeh7hr/image/upload/w_400,c_scale/v1609771206/sample.jpg)
+date: Jan 4th 2021
 questions:
   - question_text: What color is the sun?
     question_id: sun_color
@@ -23,4 +15,8 @@ questions:
         score: 1000
 ---
 
-fooasdlkjfs adlkaf lds/fd klfsdkf akdjfkl
+# Hi there!
+
+It's so nice to see you. Stuff and nonsense goes in this intro paragraph.
+
+![Image of flowers](https://res.cloudinary.com/djimeh7hr/image/upload/w_400,c_scale/v1609771206/sample.jpg)

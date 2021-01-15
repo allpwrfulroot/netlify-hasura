@@ -4,26 +4,70 @@ import { useAuth } from "components";
 import fs from "fs";
 import path from "path";
 
+import { LessonCard } from "components";
+
+const GET_USER = `
+  query GetUser($id: String!) {
+    users_by_pk(id: $id) {
+      id
+      email
+      name
+      created_at
+      responses {
+        created_at
+        id
+        answer
+        possible_score
+        question_id
+        score
+        updated_at
+      }
+    }
+  }
+`;
+
 function LessonIndex({ lessons }) {
   const { user } = useAuth();
+
+  React.useEffect(() => {
+    async function getUserData() {
+      try {
+        const userRes = await fetch("http://localhost:8080/v1/graphql", {
+          method: "POST",
+          body: JSON.stringify({
+            query: GET_USER,
+            variables: {
+              user_id: user.id,
+            },
+          }),
+          headers: {
+            "content-type": "application/json",
+            "x-hasura-role": "student",
+            "x-hasura-user-id": "e5f24adf-4958-472d-b297-c3bff2e91c41",
+          },
+        });
+        const userData = await userRes.json();
+        console.log("received: ", userData);
+      } catch (err) {
+        console.log("err in getUserData: ", err);
+      }
+    }
+    getUserData();
+  }, [user]);
 
   if (!lessons || !lessons.length) {
     return <p>No lessons found!</p>;
   }
 
   return (
-    <>
-      <p>List of lessons:</p>
-      <ul>
-        {lessons.map(({ filename, attributes }) => (
-          <li key={filename}>
-            <Link href={`/lessons/${filename}`}>
-              <a>{attributes.title}</a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </>
+    <div className="p-4 mx-auto max-w-lg">
+      <h2 className="text-2xl text-center font-bold tracking-tighter title-font my-8 text-center lg:text-4xl">
+        List of lessons
+      </h2>
+      {lessons.map(({ filename, attributes }) => (
+        <LessonCard key={filename} {...attributes} lessonId={filename} />
+      ))}
+    </div>
   );
 }
 

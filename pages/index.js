@@ -1,10 +1,7 @@
 import React from "react";
 import { FeatureCard, Hero } from "components";
 
-function Landing({ attributes }) {
-  if (!attributes) {
-    return <p>Attributes not found</p>;
-  }
+function Landing({ attributes, content }) {
   let { features, ...rest } = attributes;
   return (
     <>
@@ -25,13 +22,13 @@ function Landing({ attributes }) {
 
 export async function getStaticProps() {
   const {
-    default: { attributes },
+    default: { attributes, html },
   } = await import(`../content/landing.md`);
-  console.log("attributes? ", attributes);
 
   return {
     props: {
       attributes,
+      content: html,
     },
   };
 }

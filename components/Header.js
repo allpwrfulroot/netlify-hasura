@@ -61,13 +61,8 @@ function Header() {
         </a>
         <nav className="col-span-full row-start-2 row-end-3 flex items-center justify-center text-base md:ml-auto md:mr-auto">
           <Link href="/about">
-            <a className="mr-5 p-4 text-sm font-semibold text-gray-600 hover:text-gray-800">
+            <a className="p-4 text-sm font-semibold text-gray-600 hover:text-gray-800">
               About
-            </a>
-          </Link>
-          <Link href="/how-it-works">
-            <a className="text-sm p-4 font-semibold text-gray-600 hover:text-gray-800">
-              How it works
             </a>
           </Link>
           {user ? (

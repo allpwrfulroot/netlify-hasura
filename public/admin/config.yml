@@ -19,7 +19,12 @@ collections:
           - { label: "Heading", name: "heading", widget: "string" }
           - { label: "Subheading", name: "subheading", widget: "string" }
           - { label: "HeroImage", name: "hero", widget: "image" }
-          - { label: "Publish Date", name: "date", widget: "datetime" }
+          - {
+              label: "Publish Date",
+              name: "date",
+              widget: "date",
+              format: "MMM Do YY",
+            }
           - { label: "Body", name: "body", widget: "markdown" }
           - label: "Features"
             name: "features"
@@ -74,8 +79,13 @@ collections:
           value_field: "team.*.name",
           search_fields: ["team.*.name"],
         }
-      - { label: "Published", name: "date", widget: "datetime" }
-      - { label: "Content", name: "content", widget: "markdown" }
+      - {
+          label: "Published",
+          name: "date",
+          widget: "date",
+          format: "MMM Do YY",
+        }
+      - { label: "Content", name: "body", widget: "markdown" }
       - label: "Quiz questions"
         name: "questions"
         widget: list
