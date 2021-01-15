@@ -22,7 +22,7 @@ const handler = async function (event, context) {
     return {
       statusCode: 200,
       body: JSON.stringify({
-        "X-Hasura-User-Id": user.id,
+        "X-Hasura-User-Id": user.sub,
         "X-Hasura-Allowed-Roles": `{${role}}`,
         "X-Hasura-Role": role,
       }),
