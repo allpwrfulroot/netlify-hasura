@@ -23,7 +23,7 @@ const handler = async function (event, context) {
       statusCode: 200,
       body: JSON.stringify({
         "X-Hasura-User-Id": user.id,
-        "X-Hasura-Allowed-Roles": [role],
+        "X-Hasura-Allowed-Roles": `{${role}}`,
         "X-Hasura-Role": role,
       }),
     };
