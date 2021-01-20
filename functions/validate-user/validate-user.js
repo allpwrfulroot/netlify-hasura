@@ -3,8 +3,6 @@
 const fetch = require("node-fetch");
 
 const handler = async function (event, context) {
-  console.log("event? ", event);
-  console.log("context? ", context);
   if (!context.clientContext && !context.clientContext.identity) {
     return {
       statusCode: 500,
@@ -18,7 +16,9 @@ const handler = async function (event, context) {
   console.log("user? ", user);
   console.log("identity? ", identity);
   if (user && user.app_metadata) {
-    const role = user.app_metadata?.roles?[0] || "student";
+    const role = user.app_metadata.roles
+      ? user.app_metadata.roles[0]
+      : "student";
     return {
       statusCode: 200,
       body: JSON.stringify({
