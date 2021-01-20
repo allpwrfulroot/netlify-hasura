@@ -1,57 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { useAuth } from "components";
+import { useAuth } from "lib";
 
 function Header() {
   // const { pathname, push, replace } = useRouter();
   const [loggedIn, setLoggedIn] = React.useState(false);
   const { user, signin, signout } = useAuth();
-  // const [user, setUser] = React.useState(netlifyAuth.user);
-
-  // React.useEffect(() => {
-  //   console.log("pathname: ", pathname);
-  //   const role = user?.app_metadata?.roles
-  //     ? user.app_metadata.roles[0]
-  //     : undefined;
-  //   if (pathname === "/class-admin") {
-  //     return role === "instructor" ? null : replace("/lessons");
-  //   }
-  // }, [pathname]);
-
-  // React.useEffect(() => {
-  //   let isCurrent = true;
-  //   netlifyAuth.initialize((user) => {
-  //     console.log("initializing! ", isCurrent);
-  //     console.log("initial user? ", user);
-  //     if (isCurrent) {
-  //       setLoggedIn(!!user);
-  //       setUser(user);
-  //     }
-  //   });
-
-  //   return () => {
-  //     isCurrent = false;
-  //   };
-  // }, []);
-
-  // let login = () => {
-  //   netlifyAuth.authenticate((user) => {
-  //     console.log("authenticating! ", user);
-  //     setLoggedIn(!!user);
-  //     setUser(user);
-  //     user.app_metadata.roles.includes("instructor")
-  //       ? push("/class-admin")
-  //       : push("/lessons");
-  //   });
-  // };
-
-  // let logout = () => {
-  //   netlifyAuth.signout(() => {
-  //     setLoggedIn(false);
-  //     setUser(null);
-  //     replace("/");
-  //   });
-  // };
 
   return (
     <>
@@ -65,13 +19,11 @@ function Header() {
               About
             </a>
           </Link>
-          {user ? (
-            <Link href="/lessons">
-              <a className="text-sm p-4 font-semibold text-gray-600 hover:text-gray-800">
-                Lessons
-              </a>
-            </Link>
-          ) : null}
+          <Link href="/lessons">
+            <a className="text-sm p-4 font-semibold text-gray-600 hover:text-gray-800">
+              Lessons
+            </a>
+          </Link>
           {user ? (
             <Link href="/class-admin">
               <a className="text-sm p-4 font-semibold text-gray-600 hover:text-gray-800">

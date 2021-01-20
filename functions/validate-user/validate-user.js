@@ -17,8 +17,8 @@ const handler = async function (event, context) {
   const { identity, user } = context.clientContext;
   console.log("user? ", user);
   console.log("identity? ", identity);
-  if (user && user.app_metadata.roles) {
-    const role = user.app_metadata.roles[0];
+  if (user && user.app_metadata) {
+    const role = user.app_metadata?.roles?[0] || "student";
     return {
       statusCode: 200,
       body: JSON.stringify({

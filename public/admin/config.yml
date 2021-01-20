@@ -71,6 +71,14 @@ collections:
     fields:
       - { label: "Lesson title", name: "title", widget: "string" }
       - {
+          label: "Lesson ID",
+          name: "lesson_id",
+          widget: "number",
+          min: 222222,
+          max: 999999,
+          value_type: "int",
+        }
+      - {
           label: "Instructor",
           name: "instructor",
           widget: "relation",

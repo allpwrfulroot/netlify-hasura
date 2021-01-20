@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
-import { useAuth } from "components";
+import { useAuth } from "lib";
+import { gql, useLazyQuery } from "@apollo/client";
 import fs from "fs";
 import path from "path";
 
 import { LessonCard } from "components";
 
-const GET_USER = `
+const GET_USER = gql`
   query GetUser($id: String!) {
     users_by_pk(id: $id) {
       id
@@ -15,12 +16,12 @@ const GET_USER = `
       created_at
       responses {
         created_at
-        id
-        answer
-        possible_score
-        question_id
-        score
         updated_at
+        answer
+        score
+        max_score
+        question_id
+        lesson_id
       }
     }
   }
@@ -28,46 +29,40 @@ const GET_USER = `
 
 function LessonIndex({ lessons }) {
   const { user } = useAuth();
+  const [getUser, { error, loading, data }] = useLazyQuery(GET_USER);
 
   React.useEffect(() => {
-    async function getUserData() {
-      try {
-        const userRes = await fetch(
-          "https://netlify-cms-demo.hasura.app/v1/graphql",
-          {
-            method: "POST",
-            body: JSON.stringify({
-              query: GET_USER,
-              variables: {
-                id: user.id,
-              },
-            }),
-            headers: {
-              "content-type": "application/json",
-              authorization: `Bearer ${user.token.access_token}`,
-            },
-          }
-        );
-        const userData = await userRes.json();
-        console.log("received: ", userData);
-      } catch (err) {
-        console.log("err in getUserData: ", err);
-      }
+    // Temporary workaround while useQuery's 'skip' option gets fixed
+    if (user && user.id) {
+      console.log("fetch!");
+      getUser({
+        variables: {
+          id: user.id,
+        },
+      });
     }
-    getUserData();
   }, [user]);
 
-  if (!lessons || !lessons.length) {
-    return <p>No lessons found!</p>;
-  }
+  console.log("data: ", data);
 
   return (
     <div className="p-4 mx-auto max-w-lg">
+      <span className="block text-xs text-center font-medium tracking-widest text-blue-500 title-font mt-4 mb-1">
+        Welcome,{" "}
+        {user?.user_metadata?.full_name
+          ? user.user_metadata.full_name
+          : "new student!"}
+      </span>
       <h2 className="text-2xl text-center font-bold tracking-tighter title-font my-8 text-center lg:text-4xl">
         List of lessons
       </h2>
-      {lessons.map(({ filename, attributes }) => (
-        <LessonCard key={filename} {...attributes} lessonId={filename} />
+      {lessons.map(({ lessonSlug, attributes, points }) => (
+        <LessonCard
+          key={lessonSlug}
+          {...attributes}
+          lessonSlug={lessonSlug}
+          total_points={points}
+        />
       ))}
     </div>
   );
@@ -82,10 +77,21 @@ export async function getStaticProps() {
       const {
         default: { attributes },
       } = await import(`content/lessons/${filename}`);
+      const points = attributes?.questions?.length
+        ? attributes.questions.reduce((acc, cur) => {
+            console.log("cur: ", cur);
+            return cur.answer_options.reduce((accx, curx) => {
+              const the_score = parseInt(curx.score);
+              return the_score > 0 ? the_score + accx : accx;
+            }, 0);
+          }, 0)
+        : null;
+      console.log("points? ", points);
 
       return {
-        filename: filename.split(".")[0],
+        lessonSlug: filename.split(".")[0],
         attributes,
+        points,
       };
     })
   );

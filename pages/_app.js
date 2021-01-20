@@ -1,14 +1,18 @@
 import React from "react";
-import Head from "next/head";
+import { ApolloProvider } from "@apollo/client";
 import "tailwindcss/tailwind.css";
 
-import { AuthProvider, Header } from "components";
+import { AuthProvider, useApollo } from "lib";
+import { Header } from "components";
 
 function MyApp({ Component, pageProps }) {
+  const apolloClient = useApollo();
   return (
     <AuthProvider>
-      <Header />
-      <Component {...pageProps} />
+      <ApolloProvider client={apolloClient}>
+        <Header />
+        <Component {...pageProps} />
+      </ApolloProvider>
     </AuthProvider>
   );
 }
